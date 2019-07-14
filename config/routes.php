@@ -46,6 +46,8 @@ use Cake\Routing\Route\DashedRoute;
  */
 
 Router::scope('/', function ($routes) {
+    $routes->connect('/', ['controller' => 'Home', 'action' => 'index']);
+
     $routes->connect('/company', ['controller' => 'Company', 'action' => 'index']);
     
     $routes->connect('/company/:id', ['controller' => 'Company', 'action' => 'view'])
