@@ -34,7 +34,7 @@ class CompanyController extends AppController
 
         $this->set(['return' => null]);
 
-        $this->render('json');
+        $this->render('/json');
 
         return true;
     }
@@ -51,7 +51,7 @@ class CompanyController extends AppController
 
             $this->set(['return' => $data]);
 
-            $this->render('json');
+            $this->render('/json');
         } else {
             $this->accessCode();
         }
@@ -70,7 +70,7 @@ class CompanyController extends AppController
 
             $this->set(['return' => $data]);
 
-            $this->render('json');
+            $this->render('/json');
         } else {
             $this->accessCode();
         }
@@ -108,7 +108,7 @@ class CompanyController extends AppController
                     $return = json_encode($recipe->errors());
                 }
                 $this->set(['return' => $return]);
-                $this->render('json');
+                $this->render('/json');
             }
         } else {
             $this->accessCode();
@@ -145,7 +145,7 @@ class CompanyController extends AppController
                 }
 
                 $this->set(['return' => $return]);
-                $this->render('json');
+                $this->render('/json');
 
             }
         } else {
@@ -174,7 +174,7 @@ class CompanyController extends AppController
                 }
 
                 $this->set(['return' => $return]);
-                $this->render('json');
+                $this->render('/json');
             }
         } else {
             $this->accessCode();
