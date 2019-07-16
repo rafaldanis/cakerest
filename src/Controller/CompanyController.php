@@ -153,10 +153,9 @@ class CompanyController extends AppController
         }
     }
 
-    public function delete($id)
+    public function delete(int $id):void
     {
         if ($this->access && $this->Access->checkAccess(__CLASS__, __FUNCTION__, $this->accessData)) {
-            $return = null;
 
             $this->response->header('HTTP/1.0 400', 'Bad Request');
 
@@ -165,15 +164,13 @@ class CompanyController extends AppController
                 $entity = $this->Companys->getRow($id);
 
                 try {
-                    $result = $this->Companys->delete($entity);
+                    $this->Companys->delete($entity);
                     $this->response->header('HTTP/1.0 200', 'OK');
-                    $return = json_encode('Deleted');
                 } catch (\Throwable $th) {
                     $this->response->header('HTTP/1.0 404', 'Not Found');
-                    $return = json_encode('Not Found');
                 }
 
-                $this->set(['return' => $return]);
+                $this->set(['return' => null]);
                 $this->render('/json');
             }
         } else {
