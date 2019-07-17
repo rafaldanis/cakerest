@@ -107,9 +107,11 @@ class CompanyController extends AppController
                     $this->response->header('HTTP/1.0 400', 'Bad Request');
                     $return = json_encode($recipe->errors());
                 }
-                $this->set(['return' => $return]);
-                $this->render('/json');
             }
+
+            $this->set(['return' => $return]);
+            $this->render('/json');
+
         } else {
             $this->accessCode();
         }
@@ -120,7 +122,7 @@ class CompanyController extends AppController
         if ($this->access && $this->Access->checkAccess(__CLASS__, __FUNCTION__, $this->accessData)) {
             $return = null;
 
-            $this->response->header('HTTP/1.0 404', 'Not Found');
+            $this->response->header('HTTP/1.0 400', 'Bad Request');
 
             if ($this->request->is('put')) {
                 $data = $this->Companys->getRow($id);
@@ -143,11 +145,11 @@ class CompanyController extends AppController
                     $this->response->header('HTTP/1.0 500', 'Internal Server Error');
                     $return = json_encode('error');
                 }
-
-                $this->set(['return' => $return]);
-                $this->render('/json');
-
             }
+
+            $this->set(['return' => $return]);
+            $this->render('/json');
+
         } else {
             $this->accessCode();
         }
